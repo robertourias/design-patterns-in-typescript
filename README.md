@@ -3,7 +3,7 @@
 Todos nós usamos padrões de design em nosso código. Às vezes, é desnecessário, mas pode dar uma estrutura agradável e compreensível para sua arquitetura. Como o TypeScript está ficando mais popular, decidi mostrar alguns dos padrões populares com sua implementação.
 
 
-##Padrões abordados:
+## Padrões abordados:
 - Singleton
 - Fluent Interface
 - Observer 
@@ -14,15 +14,15 @@ Todos nós usamos padrões de design em nosso código. Às vezes, é desnecessá
 ------------
 
 
-###Singleton:
+### Singleton:
 #### Visão geral
 Singleton é a maioria dos padrões conhecidos no mundo da programação. Basicamente, você usa esse padrão se precisar instanciar um número restrito de instâncias. Você faz isso criando um construtor privado e fornecendo um método estático, que retorna uma instância da classe.
 
-####Uso
+#### Uso
 Este padrão é usado em outros padrões. A fábrica e o construtor abstratos usam em suas próprias implementações. Às vezes, você usa singletons com fachadas, porque deseja fornecer apenas uma instância de uma fachada.
 
 
-####Código　
+#### Código　
 
 ```javascript
 class Singleton {
@@ -45,14 +45,14 @@ console.log(Singleton.getInstance() === Singleton.getInstance());
 
 
 
-###Interface Fluente
-####Visão geral
+### Interface Fluente
+#### Visão geral
 Freqüentemente usado em bibliotecas de teste (por exemplo, Mocha, Cypress), uma interface fluente torna o código legível como prosa escrita. Ele é implementado usando encadeamento de métodos. Basicamente, todo método retorna isso. (self) e o encadeamento termina quando um método em cadeia retorna void. Além disso, outras técnicas usadas para uma interface fluente - funções aninhadas e escopo de objeto.
 
-####Uso
+#### Uso
 Como mencionamos anteriormente, ele é usado para criar um código mais legível. Além disso, você pode facilmente compor objetos com esse padrão e criar consultas legíveis.
 
-####Código
+#### Código
 
 ```javascript
 class Book {
@@ -98,14 +98,14 @@ console.log(
 
 
 
-###Observer
-####Visão geral
+### Observer
+#### Visão geral
 Este padrão sugere que você tem um sujeito e alguns observadores. Cada vez que você atualiza seu estado de assunto, os observadores são notificados sobre isso. Esse padrão é muito útil quando você precisa vincular vários objetos uns aos outros com abstração e liberdade de implementação. Além disso, esse padrão é uma parte fundamental do familiar padrão de arquitetura model-view-controller (MVC). Fortemente usado em quase todas as bibliotecas de GUI.
 
-####Uso
+#### Uso
 Você tem uma classe básica de Assunto, que possui 3 métodos: anexar, desanexar, notificar e uma lista de observadores, que implementou a interface Observer. Observer - é uma interface, que possui apenas um método - **update()**. Você adiciona observadores por **attach()**, remove-os por **detach()** e por **notify()** - chamando o método **update()** em cada um deles.
 
-####Código
+#### Código
 ```javascript
 async function sleep(msec: any) {
   return new Promise(resolve => setTimeout(resolve, msec));
@@ -179,18 +179,18 @@ gps.attach(twoDLogger);
 
 
 
-###Composite
-####Visão geral
+### Composite
+#### Visão geral
 O padrão composto é um padrão que abstrai um grupo de objetos em uma única instância do mesmo tipo. O padrão composto é fácil de executar, testar e compreender. É usado sempre que é necessário representar uma hierarquia parte-todo como uma estrutura em árvore e para tratar parte e todo o objeto igualmente.
 
-####Uso
+#### Uso
 Basicamente, existem duas maneiras de usar esse padrão: uniforme e seguro.
 
 De maneira uniforme, você define as operações relacionadas aos filhos na interface do Component - ou seja, que Leaf e Composite são tratados da mesma forma. O ruim é que você perde a segurança de tipo porque operações relacionadas aos filhos podem ser realizadas em objetos Folha.
 
 De maneira segura, as operações relacionadas aos filhos são definidas apenas na classe Composite. Objetos Folha e Composto são tratados de maneira diferente. Visto que as operações relacionadas aos filhos não podem ser realizadas no Leaf, você ganha segurança de tipo.
 
-####Código
+#### Código
 ```javascript
 interface Component {
   operation: Function;
@@ -262,14 +262,14 @@ duck.operation();
 
 
 
-###Abstract Factory
-####Visão geral
+### Abstract Factory
+#### Visão geral
 A fábrica abstrata é um padrão específico, que costumava criar um objeto abstrato com uma fábrica abstrata. Isso basicamente significa que você pode colocar cada fábrica que implementa o Abstract Factory e ela retornaria uma instância, que implementa a interface Abstract Object.
 
-####Uso
+#### Uso
 Você define duas interfaces: uma de Abstract Factory e uma de Subject. Em seguida, você implementa o que quiser e expõe a interface. Um cliente não sabe o que está dentro, ele apenas obtém um objeto com métodos de implementação de uma interface.
 
-####Código
+#### Código
 ```javascript
 interface SoundFactory {
   create: Function;
@@ -342,6 +342,6 @@ Wrooom-wrooom-wrooooom!
 ------------
 
 
-###Referência
+### Referência
 
 [Bits ans Pieces](https://www.netguru.com/codestories/top-5-most-used-patterns-in-oop-with-typescript)
